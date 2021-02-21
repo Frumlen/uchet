@@ -30,11 +30,11 @@ class ItemAdmin(admin.ModelAdmin):
         'articul',
         'name',
         'comment',
-        'description',
-        'material',
-        'region',
-        'price_buy',
-        'price_sell',
+        # 'description',
+        # 'material',
+        # 'region',
+        # 'price_buy',
+        # 'price_sell',
         'count',
         'created'
     ]
