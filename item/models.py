@@ -34,9 +34,9 @@ class Item(models.Model):
     comment = models.TextField(null=True, blank=True,verbose_name="Комментарий")
     description = models.TextField(null=True, blank=True, verbose_name="Описание")
     material = models.TextField(null=True, blank=True, verbose_name="Материал")
-    region = models.ForeignKey(Region, on_delete=models.DO_NOTHING, verbose_name="Регион")
-    price_buy = models.DecimalField(max_digits=10000000, decimal_places=2, verbose_name="Цена закупочная")
-    price_sell = models.DecimalField(max_digits=10000000, decimal_places=2, verbose_name="Цена продажи")
+    region = models.ForeignKey(Region, null=True, blank=True, on_delete=models.DO_NOTHING, verbose_name="Регион")
+    price_buy = models.DecimalField(max_digits=10000000, decimal_places=2, null=True, blank=True, verbose_name="Цена закупочная")
+    price_sell = models.DecimalField(max_digits=10000000, decimal_places=2, null=True, blank=True, verbose_name="Цена продажи")
     count = models.IntegerField(default=1, verbose_name="Количество")
     created = models.DateTimeField(auto_now_add=True)
 
