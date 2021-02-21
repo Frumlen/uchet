@@ -36,8 +36,10 @@ class ItemAdmin(admin.ModelAdmin):
         # 'price_buy',
         # 'price_sell',
         'count',
-        'created'
+        'created',
+        'image_tag'
     ]
     search_fields = ['id', 'name', 'description', ]
+    readonly_fields = ('image_tag',)
 
 admin.site.register(Item, ItemAdmin)

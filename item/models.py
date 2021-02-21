@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.html import mark_safe
 
 
 class Category(models.Model):
@@ -22,7 +23,7 @@ class Region(models.Model):
 
 class ItemImage(models.Model):
     image = models.ImageField(upload_to='images/%Y/%m/%d', verbose_name="Изображение")
-    item = models.ForeignKey("item.Item", on_delete=models.CASCADE, verbose_name="Связанный товар")
+    item = models.ForeignKey("item.Item", on_delete=models.CASCADE, related_name="images", verbose_name="Связанный товар")
 
     class Meta:
         verbose_name = 'Изображение товара'
@@ -46,3 +47,12 @@ class Item(models.Model):
 
     def articul(self):
         return str(self.created.strftime('%d%m%Y')) + "05{0:06d}".format(self.id)
+
+    def image_tag(self):
+        ret = ''
+        images = self.images.all().first()
+        if images:
+            ret = '<img src="%s"  width="150" height="150" />' % (images.image)
+        return mark_safe(ret)
+    image_tag.short_description = 'Image'
+    image_tag.allow_tags = True
