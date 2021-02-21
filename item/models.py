@@ -21,7 +21,7 @@ class Region(models.Model):
 
 
 class ItemImage(models.Model):
-    image = models.ImageField(upload_to='media/images/%Y/%m/%d', verbose_name="Изображение")
+    image = models.ImageField(upload_to='images/%Y/%m/%d', verbose_name="Изображение")
     item = models.ForeignKey("item.Item", on_delete=models.CASCADE, verbose_name="Связанный товар")
 
     class Meta:
