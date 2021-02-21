@@ -52,7 +52,7 @@ class Item(models.Model):
         ret = ''
         images = self.images.all().first()
         if images:
-            ret = '<img src="%s"  width="150" height="150" />' % (images.image)
+            ret = '<img src="/media/%s"  width="150" height="150" />' % (images.image)
         return mark_safe(ret)
     image_tag.short_description = 'Image'
     image_tag.allow_tags = True
